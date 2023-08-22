@@ -15,7 +15,7 @@ import {
 } from "react-icons/si";
 import "./Homepage.css";
 
-function Homepage() {
+function Homepage({night}) {
   const { scrollYProgress } = useScroll();
   const reinventingCareData = [
     {
@@ -100,7 +100,7 @@ function Homepage() {
       </div>
       <div
         className="section-two mt-24 pb-36"
-        style={{ background: "#F7F9FA" }}
+        style={{ background: !night ? "#F7F9FA" : "" }}
       >
         <h1 className="font-bold text-3xl text-center pt-20">
           Reinventing Care
@@ -114,10 +114,10 @@ function Homepage() {
                   key={index}
                 >
                   <span className="text-4xl">{item.icon}</span>
-                  <h1 className="font-bold text-xl flex text-gray-600">
+                  <h1 className={`font-bold text-xl flex ${!night ? "text-gray-600}" :""}`}>
                     Personalised Experts
                   </h1>
-                  <p className="font-extralight text-xs text-gray-600">
+                  <p className={`font-extralight text-xs ${!night ? "text-gray-600" : ""}`}>
                     {item.text}
                   </p>
                 </div>
@@ -132,7 +132,7 @@ function Homepage() {
           <h1 className="font-bold text-3xl text-center pt-12">
             You Can Rely On Us For
           </h1>
-          <div className="flex flex-wrap mt-20">
+          <div className="flex flex-wrap mt-20 w-full justify-center">
             {relyList.map((item) => {
               return (
                 <div
