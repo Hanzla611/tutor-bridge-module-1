@@ -1,0 +1,11 @@
+.menu-lists  >li {
+    padding: 1rem;
+}
+.header >img, video {
+width: 10px;
+height: 10px;
+}
+.icon-text{
+    font-size: 28px;
+    font-weight: bolder;
+}
