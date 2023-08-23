@@ -1,6 +1,6 @@
-
 import introImage from "../../assets/introimage.jpg";
-import { motion, AnimatePresence, useScroll } from "framer-motion"
+import React, { useRef } from 'react';
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 // import { reinventingCareData, relyList } from "../../mocks/homemockdata";
 import { FaUserNurse, FaUserFriends } from "react-icons/fa";
 import { PiPhoneCallFill } from "react-icons/pi";
@@ -15,8 +15,14 @@ import {
 } from "react-icons/si";
 import "./Homepage.css";
 
-function Homepage({night}) {
-  const { scrollYProgress } = useScroll();
+function Homepage({ night, scrollToContact, contactRef }) {
+  // const { scrollYProgress } = useScroll();
+  // const contactRef = useRef(null);
+
+  // const handleScrollToContact = () => {
+  //   scrollToContact(contactRef);
+  // };
+
   const reinventingCareData = [
     {
       icon: <FaUserNurse />,
@@ -114,10 +120,18 @@ function Homepage({night}) {
                   key={index}
                 >
                   <span className="text-4xl">{item.icon}</span>
-                  <h1 className={`font-bold text-xl flex ${!night ? "text-gray-600}" :""}`}>
+                  <h1
+                    className={`font-bold text-xl flex ${
+                      !night ? "text-gray-600}" : ""
+                    }`}
+                  >
                     Personalised Experts
                   </h1>
-                  <p className={`font-extralight text-xs ${!night ? "text-gray-600" : ""}`}>
+                  <p
+                    className={`font-extralight text-xs ${
+                      !night ? "text-gray-600" : ""
+                    }`}
+                  >
                     {item.text}
                   </p>
                 </div>
@@ -146,6 +160,49 @@ function Homepage({night}) {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </div>
+
+      <div className="section-four mt-24 pb-20" ref={contactRef} id="contact"   style={{ background: !night ? "#F7F9FA" : "" }}>
+        <div className=" md:container md:mx-auto px-20 flex flex-col items-center">
+          <h1 className="font-bold text-3xl text-center pt-12">Contact Us</h1>
+          <div className="flex flex-wrap mt-20 w-full justify-center items-center">
+            <div className="">
+              <label className="m-4">
+                Your name<span className="text-red-500">*</span>
+              </label>
+              <br />
+              <div className="border-2 p-2 rounded-xl m-4">
+                <input placeholder="Name" className="focus:outline-none bg-inherit" />
+              </div>
+            </div>
+            <div className="">
+              <label className="m-4">
+                Contact email<span className="text-red-500">*</span>
+              </label>
+              <br />
+              <div className="border-2 p-2 rounded-xl m-4 ">
+                <input
+                  placeholder="you@example.com"
+                  className="focus:outline-none bg-inherit"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mx-2 w-3/5 my-6">
+            <label className="m-4">
+              Your message<span className="text-red-500">*</span>
+            </label>
+            <br />
+            <div className="border-2 p-2 rounded-md m-2">
+              <textarea placeholder="" className="focus:outline-none bg-inherit w-full" />
+            </div>
+          </div>
+          <div className="flex items-center">
+            <button className="p-2 bg-black text-white font-bold rounded-3xl px-4">
+              Submit
+            </button>
           </div>
         </div>
       </div>

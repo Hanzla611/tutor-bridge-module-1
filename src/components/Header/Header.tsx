@@ -1,6 +1,6 @@
 import Icon from "../../assets/logo.svg";
 import { motion } from "framer-motion";
-function Header({ night, setNight }) {
+function Header({ night, setNight, scrollToContact }) {
   return (
     <div className="md:container md:mx-auto px-12 flex items-center">
       <div className=" md:container md:mx-auto d-flex flex items-center justify-between">
@@ -17,7 +17,7 @@ function Header({ night, setNight }) {
           </div>
         </motion.div>
         <div className="nav-items">
-          <div className="mr-6 d-flex items-center">
+          <div className={`mr-6 d-flex items-center ${night ? "text-white" : "text-black"}`}>
             <motion.span
               whileHover={{ scale: 1.1, color: "#ccc" }}
               className="p-6 font-bold cursor-pointer"
@@ -25,31 +25,32 @@ function Header({ night, setNight }) {
               Home
             </motion.span>
             <motion.span
-              whileHover={{ scale: 1.1, color: "#ccc" }} // Scale and color change on hover
+              whileHover={{ scale: 1.1, color: "#ccc" }} 
               className="p-6 font-bold cursor-pointer"
             >
               About Us
             </motion.span>
             <motion.span
-              whileHover={{ scale: 1.1, color: "#ccc" }} // Scale and color change on hover
+              whileHover={{ scale: 1.1, color: "#ccc" }} 
               className="p-6 font-bold cursor-pointer"
             >
               Services
             </motion.span>
             <motion.span
-              whileHover={{ scale: 0.2, color: "#ccc" }} // Scale and color change on hover
+              whileHover={{ scale: 0.2, color: "#ccc" }}
               className="p-6 font-bold cursor-pointer"
+              onClick={scrollToContact}
             >
               Contact Us
             </motion.span>
             <motion.button
-              whileHover={{ scale: 1.15, backgroundColor: "gray" }} // Scale and color change on hover
+              whileHover={{ scale: 1.15, backgroundColor: "gray" }} 
               className="bg-black text-white font-bold rounded-3xl p-2 mr-6"
             >
               Register With Us
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.25, backgroundColor: ";lightgreen" }} // Scale and color change on hover
+              whileHover={{ scale: 1.25, backgroundColor: ";lightgreen" }} 
               className="p-2 bg-green-400 text-white font-bold rounded-3xl px-4"
             >
               LogIn ▶️
@@ -60,14 +61,14 @@ function Header({ night, setNight }) {
       {night ? (
         <span
           onClick={() => setNight(!night)}
-          className="cursor-pointer text-3xl pl-6"
+          className="cursor-pointer text-3xl pl-6 focus:outline-none select-none"
         >
           ☀️
         </span>
       ) : (
         <span
           onClick={() => setNight(!night)}
-          className=" cursor-pointer pl-6 text-3xl"
+          className=" cursor-pointer pl-6 text-3xl focus:outline-none select-none"
         >
           🌒
         </span>
